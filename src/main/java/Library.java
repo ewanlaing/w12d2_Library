@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
 
@@ -29,5 +30,17 @@ public class Library {
 
     public boolean hasBook(Book book) {
         return this.books.contains(book);
+    }
+
+    public int numberByGenre(String genre) {
+        HashMap<String, Integer> genreNumbers = new HashMap<>();
+        genreNumbers.put("Horror", 0);
+        genreNumbers.put("Fantasy", 0);
+        genreNumbers.put("Science Fiction", 0);
+        for (Book book : this.books){
+            int initial = genreNumbers.get(book.getGenre());
+            genreNumbers.replace(book.getGenre(), (initial + 1));
+        }
+        return genreNumbers.get(genre);
     }
 }

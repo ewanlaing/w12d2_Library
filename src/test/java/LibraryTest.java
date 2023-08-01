@@ -17,7 +17,8 @@ public class LibraryTest {
         book1 = new Book("Goosebumps", "R.L.Stine", "Horror");
         book2 = new Book ("The Shining", "Stephen King", "Horror");
         book3 = new Book("Dune", "Frank Herbert", "Science Fiction");
-        book4 = new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy");
+        book4 = new Book("The Hobbit", "J.R.R. Tolkien", "Horror");
+
     }
 
     @Test
@@ -57,5 +58,14 @@ public class LibraryTest {
     @Test
     public void cannotFindBook(){
         assertEquals(false, library.hasBook(book2));
+    }
+
+    @Test
+    public void canFindQuantityOfGenre(){
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        assertEquals(2, library.numberByGenre("Horror"));
+        assertEquals(1, library.numberByGenre("Science Fiction"));
     }
 }
